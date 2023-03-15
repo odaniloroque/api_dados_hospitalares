@@ -23,16 +23,34 @@ const config = {
 
 const pool = new mssql.ConnectionPool(config);
 
-// pool.connect(err => {
-//   if (err) {
-//     console.error(err);
-//   } else {
-//     console.log('Conectado ao MSSQL');
-//   }
-// });
+pool.connect(err => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('Conectado ao MSSQL');
+  }
+});
 
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {});
+
+
+app.get('/test-connection', async (req, res) => {
+  try {
+    await mssql.connect(config);
+    const result = await sql.query`SELECT 1 AS Result`;
+    console.dir(result);
+    res.send('Conexão com o banco de dados bem-sucedida.!');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Falha ao conectar ao banco de dados.');
+  } finally {
+    await mssql.close();
+  }
+});
+
+
+app.get('/dados_do_paciente', (req, res) => {
   pool.request().query('SELECT * FROM paciente', (err, result) => {
     if (err) {
       console.error(err);
@@ -43,21 +61,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Route for testing the database connection
-app.get('/test-connection', async (req, res) => {
-  try {
-    await mssql.connect(config);
-    const result = await sql.query`SELECT 1 AS Result`;
-    console.dir(result);
-    res.send('Database connection successful!');
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Failed to connect to database');
-  } finally {
-    await mssql.close();
-  }
-});
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Servidor iniciado na porta 3000');
 });
