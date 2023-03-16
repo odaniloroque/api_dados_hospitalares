@@ -90,6 +90,7 @@ app.get('/', (req, res) => {
         </style>
       </head>
       <body>
+        <a href="./test-connection">...</a>
         <h1>Bem-vindo(a)!</h1>
         <h2>Dados Gerais</h2>
         <ul>
