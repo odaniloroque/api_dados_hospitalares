@@ -158,7 +158,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/dados_do_paciente', async (req, res) => {
-  const emManutencao = false;
+  const emManutencao = true;
   if (emManutencao) {
     res.redirect('/manutencao');
   } else {
@@ -260,7 +260,7 @@ app.get('/estrutura_hospitalar', async (req, res) => {
 })
 
 app.get('/dados_profissional', async (req, res) => {
-  const emManutencao = false;
+  const emManutencao = true;
   if (emManutencao) {
     res.redirect('/manutencao');
   } else {
