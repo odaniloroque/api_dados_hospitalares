@@ -14,6 +14,7 @@ const config = {
   password: process.env.DB_PASSWORD,
   server: process.env.DB_SERVER,
   database: process.env.DB_DATABASE,
+  port:  parseInt(process.env.DB_PORT, 10),
   options: {
     encrypt: false, // Se você estiver usando o Azure
     trustServerCertificate: true // Altere esta opção se estiver usando SSL
@@ -31,7 +32,6 @@ pool.connect(err => {
   }
 });
 
-
 app.get('/', (req, res) => { 
   res.send(`
   <!DOCTYPE html>
@@ -40,17 +40,29 @@ app.get('/', (req, res) => {
         <title>Bem-vindo(a)!</title>
         <style>
           body {
-            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            // background: linear-gradient(to bottom, #87CEFA, #FFFFFF);
+            // background-image: linear-gradient(to bottom, #f5f5f5, #ffffff);
+            // background-image: linear-gradient(to bottom, #87CEEB, #ffffff);
+            // font-family: Arial, sans-serif;
+            font-family: Helvetica, Arial, sans-serif;
             margin: 10px;
             padding: 0;
           }
 
           h1 {
             text-align: center;
+            color: #023535;
+            font-size: 40px;
           }
 
           h2 {
             margin: 0 0 0 50px;
+             color: #333;
+          }
+
+          h3 {
+             color: #333;
           }
 
           ul {
@@ -62,6 +74,10 @@ app.get('/', (req, res) => {
           li {
             margin: 10px 0;
           }
+          p {
+              color: #666;
+              font-size: 12px;
+            }
 
           a {
             color: #000;
@@ -352,22 +368,19 @@ app.get('/manutencao', function(req, res) {
         background-color: #f2f2f2;
         font-family: Arial, sans-serif;
         text-align: center;
-        // padding-top: 5px;
       }
       h1 {
         color: #333;
         font-size: 40px;
-        // margin-bottom: 20px;
+
       }
       p {
         color: #666;
         font-size: 24px;
-        // margin-bottom: 50px;
       }
       img {
         max-width: 80%;
         height: auto;
-        // margin-bottom: 10px;
       }
     </style>
   </head>

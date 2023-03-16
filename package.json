@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon run index.js"
+    "dev": "nodemon run index.js",
+    "start": "node index.js"
   },
   "author": "Danilo Roque",
   "license": "ISC",
