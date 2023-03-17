@@ -260,13 +260,14 @@ app.get('/estrutura_hospitalar', async (req, res) => {
 })
 
 app.get('/dados_profissional', async (req, res) => {
-  const emManutencao = true;
+  const emManutencao = false;
   if (emManutencao) {
     res.redirect('/manutencao');
   } else {
         try {
           await mssql.connect(config);
-          const result = await mssql.query(`SELECT Profissionais.Nome_do_profissional
+          const result = await mssql.query(
+    `SELECT Profissionais.Nome_do_profissional
           ,Profissionais.Cpf
           ,Profissionais.CNS
           ,[Conselhos regionais].[Descricao do conselho] AS conselho
@@ -298,15 +299,36 @@ app.get('/admissao', async (req, res) => {
   const emManutencao = true;
   if (emManutencao) {
     res.redirect('/manutencao');
-  } else { //aguardando bloco de codigo
-       }
+  } else { 
+    
+    try {
+      await sql.connect(config);
+      const result = await sql.query(`sss`);
+      res.json(result.recordset)
+    } catch (error) {
+      console.log(err);
+      res.status(500).send('Erro no servidor')
+    } finally {
+      sql.close();
+    }
+}
 });
 
 app.get('/transferencia', async (req, res) => {
   const emManutencao = true;
   if (emManutencao) {
     res.redirect('/manutencao');
-  } else { //aguardando bloco de codigo
+  } else { //aguardando bloco de codigo,
+    try {
+      await sql.connect(config);
+      const result = await sql.query(`sss`);
+      res.json(result.recordset)
+    } catch (error) {
+      console.log(err);
+      res.status(500).send('Erro no servidor')
+    } finally {
+      sql.close();
+    }
        }
 });
 
@@ -315,6 +337,16 @@ app.get('/internacao', async (req, res) => {
   if (emManutencao) {
     res.redirect('/manutencao');
   } else { //aguardando bloco de codigo
+    try {
+      await sql.connect(config);
+      const result = await sql.query(`sss`);
+      res.json(result.recordset)
+    } catch (error) {
+      console.log(err);
+      res.status(500).send('Erro no servidor')
+    } finally {
+      sql.close();
+    }
        }
 });
 
@@ -323,6 +355,16 @@ app.get('/cirurgia', async (req, res) => {
   if (emManutencao) {
     res.redirect('/manutencao');
   } else { //aguardando bloco de codigo
+    try {
+      await sql.connect(config);
+      const result = await sql.query(`sss`);
+      res.json(result.recordset)
+    } catch (error) {
+      console.log(err);
+      res.status(500).send('Erro no servidor')
+    } finally {
+      sql.close();
+    }
        }
 });
 
@@ -331,6 +373,16 @@ app.get('/alta_hospitalar', async (req, res) => {
   if (emManutencao) {
     res.redirect('/manutencao');
   } else { //aguardando bloco de codigo
+    try {
+      await sql.connect(config);
+      const result = await sql.query(`sss`);
+      res.json(result.recordset)
+    } catch (error) {
+      console.log(err);
+      res.status(500).send('Erro no servidor')
+    } finally {
+      sql.close();
+    }
        }
 });
 
@@ -339,6 +391,16 @@ app.get('/dados_do_leito', async (req, res) => {
   if (emManutencao) {
     res.redirect('/manutencao');
   } else { //aguardando bloco de codigo
+    try {
+      await sql.connect(config);
+      const result = await sql.query(`sss`);
+      res.json(result.recordset)
+    } catch (error) {
+      console.log(err);
+      res.status(500).send('Erro no servidor')
+    } finally {
+      sql.close();
+    }
        }
 });
 
