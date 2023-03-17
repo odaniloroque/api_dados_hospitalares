@@ -24,13 +24,13 @@ const config = {
 const pool = new mssql.ConnectionPool(config);
 
 // Teste realizado no inicio para verificar as coneções
-pool.connect(err => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('Conectado ao MSSQL');
-  }
-});
+// pool.connect(err => {
+//   if (err) {
+//     console.error(err);
+//   } else {
+//     console.log('Conectado ao MSSQL');
+//   }
+// });
 
 app.get('/', (req, res) => { 
   res.send(`
