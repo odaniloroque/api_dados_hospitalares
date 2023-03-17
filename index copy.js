@@ -1,25 +1,26 @@
 const express = require('express');
-const mssql = require('mssql');
+// const mssql = require('mssql');
 const morgan = require('morgan');
+const config = require('./databases')
 
 const app = express();
 
-require('dotenv').config();
+// require('dotenv').config();
 
 app.use(express.json());
 app.use(morgan('tiny'));
 
-const config = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  server: process.env.DB_SERVER,
-  database: process.env.DB_DATABASE,
-  port:  parseInt(process.env.DB_PORT, 10),
-  options: {
-    encrypt: false, // Se você estiver usando o Azure
-    trustServerCertificate: true // Altere esta opção se estiver usando SSL
-  }
-};
+// const config = {
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   server: process.env.DB_SERVER,
+//   database: process.env.DB_DATABASE,
+//   port:  parseInt(process.env.DB_PORT, 10),
+//   options: {
+//     encrypt: false, // Se você estiver usando o Azure
+//     trustServerCertificate: true // Altere esta opção se estiver usando SSL
+//   }
+// };
 
 // const pool = new mssql.ConnectionPool(config);
 

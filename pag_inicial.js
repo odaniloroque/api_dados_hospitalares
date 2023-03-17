@@ -1,8 +1,8 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 
 
-app.get('/', (req, res) => { 
+router.get('/', (req, res) => { 
   res.send(`
   <!DOCTYPE html>
     <html>
@@ -126,3 +126,5 @@ app.get('/', (req, res) => {
     </html>
   `);
 });
+
+module.exports = router;
